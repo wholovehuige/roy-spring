@@ -11,6 +11,9 @@ import java.io.IOException;
 @Configuration
 public class CORSConfig implements Filter {
 
+
+
+
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 

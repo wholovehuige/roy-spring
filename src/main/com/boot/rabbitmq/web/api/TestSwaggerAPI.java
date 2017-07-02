@@ -7,6 +7,7 @@ import com.boot.rabbitmq.domain.External;
 import com.boot.rabbitmq.domain.Login;
 import com.boot.rabbitmq.message.MessageSend;
 //import com.boot.rabbitmq.properties.Properties;
+import com.boot.rabbitmq.service.LoginService;
 import com.boot.rabbitmq.service.MailService;
 import com.boot.rabbitmq.service.impl.LoginServiceImpl;
 import com.boot.rabbitmq.web.request.LonginRequest;
@@ -29,7 +30,7 @@ public class TestSwaggerAPI {
     @Autowired
     private MailService mailService;
     @Autowired
-    private LoginServiceImpl loginService;
+    private LoginService loginService;
 //    @Autowired
 //    private Properties properties;
     @Autowired
@@ -51,7 +52,7 @@ public class TestSwaggerAPI {
     @ResponseBody
     public String getMessage(LonginRequest request) {
 //        redis.add(request.getPhone(),request.getPassword());
-        loginService.test(request.getUserName(),request.getPhone(),request.getPassword());
+        loginService.register(request.getUserName(),request.getPhone(),request.getPassword());
         return "1";
     }
 
