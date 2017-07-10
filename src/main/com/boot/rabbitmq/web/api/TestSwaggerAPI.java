@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.boot.rabbitmq.config.Redis;
 import com.boot.rabbitmq.domain.External;
 import com.boot.rabbitmq.domain.Login;
-import com.boot.rabbitmq.message.MessageSend;
+//import com.boot.rabbitmq.message.MessageSend;
 //import com.boot.rabbitmq.properties.Properties;
 import com.boot.rabbitmq.service.LoginService;
 import com.boot.rabbitmq.service.MailService;
@@ -25,8 +25,8 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/message")
 public class TestSwaggerAPI {
-    @Autowired
-    private MessageSend messageSend;
+//    @Autowired
+//    private MessageSend messageSend;
     @Autowired
     private MailService mailService;
     @Autowired
@@ -40,13 +40,13 @@ public class TestSwaggerAPI {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "msg",value = "入队信息",required = true)
     })
-    @ResponseBody
-    @RequestMapping(value = "/send",method = RequestMethod.POST )
-    public String messageSend(@RequestBody String msg) {
-        messageSend.send(External.test,msg);
-
-        return "ok";
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/send",method = RequestMethod.POST )
+//    public String messageSend(@RequestBody String msg) {
+//        messageSend.send(External.test,msg);
+//
+//        return "ok";
+//    }
 
     @RequestMapping(value = "/user" ,method = RequestMethod.POST)
     @ResponseBody

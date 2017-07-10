@@ -29,11 +29,11 @@ spring:
       ddl-auto: update
 
 
-  rabbitmq:
-    host: 139.199.94.67
-    port: 5672
-    username: admin
-    password: admin
+#  rabbitmq:
+#    host: 139.199.94.67
+#    port: 5672
+#    username: admin
+#    password: admin
   redis:
     database: 0
     port: 6379
@@ -50,7 +50,10 @@ spring:
     username: 673713797@qq.com
     password: a18007154015
     default-encoding: utf-8
-server:
-  port: 8081
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+      cluster-nodes: 192.168.122.1:9300
+      cluster-name: apple
 #    port: 587
-
