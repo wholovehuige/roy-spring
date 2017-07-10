@@ -25,4 +25,6 @@ public interface CityService {
      * @return
      */
     List<City> searchCity(Integer pageNumber, Integer pageSize, String searchContent);
+
+    void search(int pagenow, int rowMax, String searchKey);
 }

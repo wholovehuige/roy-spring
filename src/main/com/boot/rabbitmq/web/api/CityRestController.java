@@ -24,11 +24,20 @@ public class CityRestController {
         return cityService.saveCity(city);
     }
 
-    @RequestMapping(value = "/api/city/search", method = RequestMethod.GET,headers = "Accept=application/json")
+    @RequestMapping(value = "/api/city/searchCity", method = RequestMethod.GET,headers = "Accept=application/json")
     @ResponseBody
     public List<City> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
                                  @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                  @RequestParam(value = "searchContent") String searchContent) {
         return cityService.searchCity(pageNumber,pageSize,searchContent);
+    }
+
+    @RequestMapping(value = "/api/city/search", method = RequestMethod.GET,headers = "Accept=application/json")
+    @ResponseBody
+    public String search(@RequestParam(value = "pageNumber") Integer pageNumber,
+                                 @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                 @RequestParam(value = "searchContent") String searchContent) {
+         cityService.search(pageNumber,pageSize,searchContent);
+         return "1";
     }
 }
