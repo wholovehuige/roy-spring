@@ -10,9 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.util.Date;
 import java.util.List;
@@ -30,13 +28,12 @@ public class LoginServiceImpl implements LoginService {
 
 
     public boolean isRegister(String phone) {
-        Long id = 1l;
         String sql = "SELECT user_id,user_name from login where phone = \'" + phone + "\'";
         Query nativeQuery = entityManager.createNativeQuery(sql);
         List<Object[]> list = nativeQuery.getResultList();
-        Object[] objects = list.get(1);
-
-        System.out.println("");
+        if(list.size()>0) {
+            return true;
+        }
         return false;
     }
 
@@ -52,7 +49,6 @@ public class LoginServiceImpl implements LoginService {
         login.setCrDate(new Date());
         login.setUpDate(new Date());
         loginDao.save(login);
-        System.out.println("id=" + login.getId());
         return login.getId();
     }
 

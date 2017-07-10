@@ -50,5 +50,7 @@ spring:
     username: 673713797@qq.com
     password: a18007154015
     default-encoding: utf-8
+server:
+  port: 8081
 #    port: 587
 
