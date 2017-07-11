@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created by bysocket on 03/05/2017.
  */
 @Document(indexName = "cityindex", type = "city")
-public class City implements Serializable{
+public class CityEs implements Serializable{
 
     private static final long serialVersionUID = -1L;
 

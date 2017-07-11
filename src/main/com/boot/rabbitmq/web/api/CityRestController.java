@@ -1,6 +1,6 @@
 package com.boot.rabbitmq.web.api;
 
-import com.boot.rabbitmq.es.domain.City;
+import com.boot.rabbitmq.es.domain.CityEs;
 import com.boot.rabbitmq.es.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -20,24 +20,24 @@ public class CityRestController {
 
     @RequestMapping(value = "/api/city", method = RequestMethod.POST,headers = "Accept=application/json")
     @ResponseBody
-    public Long createCity(City city) {
+    public Long createCity(CityEs city) {
         return cityService.saveCity(city);
     }
 
     @RequestMapping(value = "/api/city/searchCity", method = RequestMethod.GET,headers = "Accept=application/json")
     @ResponseBody
-    public List<City> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
-                                 @RequestParam(value = "pageSize", required = false) Integer pageSize,
-                                 @RequestParam(value = "searchContent") String searchContent) {
+    public List<CityEs> searchCity(@RequestParam(value = "pageNumber") Integer pageNumber,
+                                   @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                                   @RequestParam(value = "searchContent") String searchContent) {
         return cityService.searchCity(pageNumber,pageSize,searchContent);
     }
 
     @RequestMapping(value = "/api/city/search", method = RequestMethod.GET,headers = "Accept=application/json")
     @ResponseBody
-    public String search(@RequestParam(value = "pageNumber") Integer pageNumber,
+    public List<CityEs> search(@RequestParam(value = "pageNumber") Integer pageNumber,
                                  @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                  @RequestParam(value = "searchContent") String searchContent) {
-         cityService.search(pageNumber,pageSize,searchContent);
-         return "1";
+        List<CityEs> cityEsList = cityService.search(pageNumber,pageSize,searchContent);
+         return cityEsList;
     }
 }

@@ -2,7 +2,7 @@
 package com.boot.rabbitmq.es.service;
 
 
-import com.boot.rabbitmq.es.domain.City;
+import com.boot.rabbitmq.es.domain.CityEs;
 
 import java.util.List;
 
@@ -14,7 +14,8 @@ public interface CityService {
      * @param city
      * @return
      */
-    Long saveCity(City city);
+    Long saveCity(CityEs city);
+
 
     /**
      * 根据关键词，function score query 权重分分页查询
@@ -24,7 +25,7 @@ public interface CityService {
      * @param searchContent
      * @return
      */
-    List<City> searchCity(Integer pageNumber, Integer pageSize, String searchContent);
+    List<CityEs> searchCity(Integer pageNumber, Integer pageSize, String searchContent);
 
-    void search(int pagenow, int rowMax, String searchKey);
+    List<CityEs> search(int pagenow, int rowMax, String searchKey);
 }
