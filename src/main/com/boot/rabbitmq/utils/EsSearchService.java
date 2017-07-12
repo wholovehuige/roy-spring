@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
  * Created by roy on 17-7-12.
  */
 @Service
-public class SearchService {
+public class EsSearchService {
 
     public JSONObject analyze(String result) {
         JSONObject object = new JSONObject();

@@ -40,13 +40,13 @@ public class TestSwaggerAPI {
     @ApiImplicitParams({
             @ApiImplicitParam(name = "msg",value = "入队信息",required = true)
     })
-//    @ResponseBody
-//    @RequestMapping(value = "/send",method = RequestMethod.POST )
-//    public String messageSend(@RequestBody String msg) {
+    @ResponseBody
+    @RequestMapping(value = "/send",method = RequestMethod.POST )
+    public String messageSend(@RequestBody String msg) {
 //        messageSend.send(External.test,msg);
-//
-//        return "ok";
-//    }
+
+        return "ok";
+    }
 
     @RequestMapping(value = "/user" ,method = RequestMethod.POST)
     @ResponseBody

@@ -5,8 +5,7 @@ import com.boot.rabbitmq.es.domain.CityEs;
 import com.boot.rabbitmq.es.repository.CityRepository;
 import com.boot.rabbitmq.es.service.CityService;
 import com.boot.rabbitmq.utils.HttpMethod;
-import com.boot.rabbitmq.utils.SearchService;
-import org.elasticsearch.action.search.SearchResponse;
+import com.boot.rabbitmq.utils.EsSearchService;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
@@ -43,7 +42,7 @@ public class CityESServiceImpl implements CityService {
     CityRepository cityRepository;
 
     @Autowired
-    private SearchService searchService;
+    private EsSearchService searchService;
 
     @Inject
     private ElasticsearchTemplate template;

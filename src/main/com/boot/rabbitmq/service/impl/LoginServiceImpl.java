@@ -2,6 +2,8 @@ package com.boot.rabbitmq.service.impl;
 
 import com.boot.rabbitmq.dao.LoginDao;
 import com.boot.rabbitmq.domain.Login;
+import com.boot.rabbitmq.es.domain.LoginEs;
+import com.boot.rabbitmq.es.service.impl.LoginEsServiceImpl;
 import com.boot.rabbitmq.service.LoginService;
 import com.boot.rabbitmq.utils.UuidService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
@@ -22,7 +25,8 @@ import java.util.List;
 public class LoginServiceImpl implements LoginService {
     @Autowired
     private LoginDao loginDao;
-
+    @Autowired
+    private LoginEsServiceImpl loginEsService;
     @Autowired
     private EntityManager entityManager;
 
@@ -37,6 +41,7 @@ public class LoginServiceImpl implements LoginService {
         return false;
     }
 
+    @Transactional
     public Long register(String userName, String phone, String password) {
         if (isRegister(phone)) {
             return null;
@@ -49,6 +54,15 @@ public class LoginServiceImpl implements LoginService {
         login.setCrDate(new Date());
         login.setUpDate(new Date());
         loginDao.save(login);
+        LoginEs loginEs = new LoginEs();
+        loginEs.setId(login.getId());
+        loginEs.setUserId(login.getUserId());
+        loginEs.setUserName(login.getUserName());
+        loginEs.setPhone(login.getPhone());
+        loginEs.setPassWord(login.getPassWord());
+        loginEs.setCrDate(login.getCrDate());
+        loginEs.setUpDate(login.getUpDate());
+        loginEsService.saveLoginEs(loginEs);
         return login.getId();
     }
 
