@@ -37,14 +37,14 @@ spring:
   redis:
     database: 0
     port: 6379
-    password: 123456
+    password: Roy13011120332
     pool:
       max-active: 8
       max-wait: -1
       max-idle: 8
       min-idle: 0
     timeout: 0
-    host: 139.199.94.67
+    host: r-2ze922dc7a98b0c4.redis.rds.aliyuncs.com
   mail:
     host: mx1.qq.com
     username: 673713797@qq.com
@@ -54,6 +54,6 @@ spring:
     elasticsearch:
       repositories:
         enabled: true
-      cluster-nodes: 192.168.122.1:9300
+      cluster-nodes: 127.0.0.1:9300
       cluster-name: apple
 #    port: 587

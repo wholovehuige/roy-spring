@@ -74,45 +74,5 @@ public class TestSwaggerAPI {
         return "";
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
-    @ResponseBody
-    public JSONObject newaPAGE() {
-        String[] titile = new String[7];
-        JSONObject jsonObject = new JSONObject();
-        JSONArray foodtitle = new JSONArray();
-        JSONArray foodData = new JSONArray();
-        JSONObject object1 = new JSONObject();
-        object1.put("value",15);
-        object1.put("name","动物油");
-        foodData.add(object1);
-        JSONObject object2 = new JSONObject();
-        object2.put("value",33);
-        object2.put("name","肉制品");
-        foodData.add(object2);
-        JSONObject object3 = new JSONObject();
-        object3.put("value",10);
-        object3.put("name","乳制品");
-        foodData.add(object3);
-        JSONObject object4 = new JSONObject();
-        object4.put("value",20);
-        object4.put("name","水产品");
-        foodData.add(object4);
-        JSONObject object5 = new JSONObject();
-        object5.put("value",8);
-        object5.put("name","酒类");
-        foodData.add(object5);
-        JSONObject object6 = new JSONObject();
-        object6.put("value",14);
-        object6.put("name","植物油");
-        foodData.add(object6);
-        for(int i = 0 ; i<foodData.size();i++) {
-            JSONObject jsonObject11 = foodData.getJSONObject(i);
-            String name = jsonObject11.getString("name");
-            titile[i] = name;
-            foodtitle.add(name);
-        }
-        jsonObject.put("foodtitle",titile);
-        jsonObject.put("foodData",foodData);
-        return jsonObject;
-    }
+
 }
