@@ -2,6 +2,7 @@
 package com.boot.rabbitmq.es.service;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.boot.rabbitmq.es.domain.CityEs;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface CityService {
     List<CityEs> searchCity(Integer pageNumber, Integer pageSize, String searchContent);
 
     List<CityEs> search(int pagenow, int rowMax, String searchKey);
+
+    JSONObject searchBy(int pagenow, int rowMax, String searchKey);
 }

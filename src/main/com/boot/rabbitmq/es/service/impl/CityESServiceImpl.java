@@ -1,8 +1,11 @@
 package com.boot.rabbitmq.es.service.impl;
 
+import com.alibaba.fastjson.JSONObject;
 import com.boot.rabbitmq.es.domain.CityEs;
 import com.boot.rabbitmq.es.repository.CityRepository;
 import com.boot.rabbitmq.es.service.CityService;
+import com.boot.rabbitmq.utils.HttpMethod;
+import com.boot.rabbitmq.utils.SearchService;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.inject.Inject;
 import org.elasticsearch.index.query.BoolQueryBuilder;
@@ -38,6 +41,9 @@ public class CityESServiceImpl implements CityService {
 
     @Autowired
     CityRepository cityRepository;
+
+    @Autowired
+    private SearchService searchService;
 
     @Inject
     private ElasticsearchTemplate template;
@@ -93,5 +99,13 @@ public class CityESServiceImpl implements CityService {
 //                .addAggregation(terms("name").field("txid").subAggregation(sum("sum").field("proteinSize")).order(Terms.Order.aggregation("sum", false)).size(10))
 //                .build();
 
+    }
+
+    @Override
+    public JSONObject searchBy(int pagenow, int rowMax, String searchKey) {
+        JSONObject jsonObject = searchService.mustSearch(pagenow,rowMax,searchKey);
+        String url = "http://192.168.122.1:9200/_search/";
+        String res = HttpMethod.sendPost(url, jsonObject.toString());
+        return searchService.analyze(res);
     }
 }

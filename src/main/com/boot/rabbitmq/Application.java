@@ -14,6 +14,7 @@ public class Application extends SpringBootServletInitializer {
     public static void main(String[] args) {
         SpringApplication application = new SpringApplication(Application.class);
         application.run(args);
+        System.out.println("http://192.168.122.1:9200/_plugin/head/");
     }
 
 

@@ -1,5 +1,6 @@
 package com.boot.rabbitmq.web.api;
 
+import com.alibaba.fastjson.JSONObject;
 import com.boot.rabbitmq.es.domain.CityEs;
 import com.boot.rabbitmq.es.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,13 @@ public class CityRestController {
                                  @RequestParam(value = "searchContent") String searchContent) {
         List<CityEs> cityEsList = cityService.search(pageNumber,pageSize,searchContent);
          return cityEsList;
+    }
+
+    @RequestMapping(value = "/api/city/searchBy", method = RequestMethod.GET,headers = "Accept=application/json")
+    @ResponseBody
+    public JSONObject searchBy(@RequestParam(value = "pageNumber") Integer pageNumber,
+                               @RequestParam(value = "pageSize", required = false) Integer pageSize,
+                               @RequestParam(value = "searchContent") String searchContent) {
+        return cityService.searchBy(pageNumber,pageSize,searchContent);
     }
 }
