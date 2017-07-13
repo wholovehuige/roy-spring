@@ -1,0 +1,12 @@
+spring:
+  redis:
+    database: 0
+    port: 6379
+    password: Roy13011120332
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
+    timeout: 0
+    host: r-2ze922dc7a98b0c4.redis.rds.aliyuncs.com

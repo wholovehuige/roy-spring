@@ -1,4 +1,7 @@
 spring:
+  profiles:
+    active: dev
+#    active: prod
   datasource:
     name: yyy_db
     url: jdbc:mysql://rm-uf6f66d26gd6rl06io.mysql.rds.aliyuncs.com:3306/apple?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true
@@ -34,17 +37,6 @@ spring:
 #    port: 5672
 #    username: admin
 #    password: admin
-  redis:
-    database: 0
-    port: 6379
-    password: Roy13011120332
-    pool:
-      max-active: 8
-      max-wait: -1
-      max-idle: 8
-      min-idle: 0
-    timeout: 0
-    host: r-2ze922dc7a98b0c4.redis.rds.aliyuncs.com
   mail:
     host: mx1.qq.com
     username: 673713797@qq.com
@@ -54,6 +46,7 @@ spring:
     elasticsearch:
       repositories:
         enabled: true
-      cluster-nodes: 127.0.0.1:9300
+      cluster-nodes: 192.168.122.1:9300
       cluster-name: apple
+
 #    port: 587

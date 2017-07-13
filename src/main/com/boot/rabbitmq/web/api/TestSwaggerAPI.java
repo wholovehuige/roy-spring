@@ -51,7 +51,7 @@ public class TestSwaggerAPI {
     @RequestMapping(value = "/user" ,method = RequestMethod.POST)
     @ResponseBody
     public String getMessage(LonginRequest request) {
-//        redis.add(request.getPhone(),request.getPassword());
+        redis.add(request.getPhone(),request.getPassword());
         Long id  = loginService.register(request.getUserName(),request.getPhone(),request.getPassword());
         return id==null?"该用户已经被注册了":id.toString();
     }
